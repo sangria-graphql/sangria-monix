@@ -16,7 +16,7 @@ class MonixIntegrationSpec extends WordSpec with Matchers {
 
   "Monix Integration" should {
     "support itself" in {
-      impl.supported(new monix.ObservableSubscriptionStream) should be (true)
+      impl.supported(monix.observableSubscriptionStream) should be (true)
     }
 
     "map" in {
@@ -37,6 +37,10 @@ class MonixIntegrationSpec extends WordSpec with Matchers {
 
     "first" in {
       res(impl.first(Observable(1, 2, 3))) should be (1)
+    }
+
+    "first throws error on empty" in {
+      an [IllegalStateException] should be thrownBy res(impl.first(Observable()))
     }
 
     "failed" in {
