@@ -1,6 +1,6 @@
 name := "sangria-monix"
 organization := "org.sangria-graphql"
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 description := "Sangria monix integration"
 homepage := Some(url("http://sangria-graphql.org"))
@@ -10,7 +10,7 @@ scalaVersion := "2.11.8"
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 libraryDependencies ++= Seq(
-  "org.sangria-graphql" %% "sangria-streaming-api" % "0.1.0-SNAPSHOT",
+  "org.sangria-graphql" %% "sangria-streaming-api" % "0.1.0",
   "io.monix" %% "monix-execution" % "2.0.3",
   "io.monix" %% "monix-reactive" % "2.0.3",
   "org.scalatest" %% "scalatest" % "2.2.6" % "test"
