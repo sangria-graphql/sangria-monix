@@ -1,6 +1,6 @@
 name := "sangria-monix"
 organization := "org.sangria-graphql"
-version := "0.1.0"
+version := "0.1.0-SNAPSHOT"
 
 description := "Sangria monix integration"
 homepage := Some(url("http://sangria-graphql.org"))
