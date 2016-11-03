@@ -5,15 +5,15 @@ scala:
 jdk:
   - oraclejdk8
 script: |
-  if [[ "$TRAVIS_SCALA_VERSION" == 2.11.* ]]; then
-    sbt ++$TRAVIS_SCALA_VERSION clean coverage test
-  else
-    sbt ++$TRAVIS_SCALA_VERSION clean test
-  fi
+  - if [ "$TRAVIS_SCALA_VERSION" == "2.11.8" ]; then
+      sbt ++$TRAVIS_SCALA_VERSION clean coverage test;
+      else
+      sbt ++$TRAVIS_SCALA_VERSION clean test;
+      fi
 after_success: |
-  if [[ "$TRAVIS_SCALA_VERSION" == 2.11.* ]]; then
-    sbt ++$TRAVIS_SCALA_VERSION coveralls
-  fi
+  - if [ "$TRAVIS_SCALA_VERSION" == "2.11.8" ]; then
+      sbt ++$TRAVIS_SCALA_VERSION coveralls;
+      fi
 cache:
   directories:
     - $HOME/.ivy2/cache
