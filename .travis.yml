@@ -4,13 +4,13 @@ scala:
   - "2.11.8"
 jdk:
   - oraclejdk8
-script: |
+script:
   - if [ "$TRAVIS_SCALA_VERSION" == "2.11.8" ]; then
       sbt ++$TRAVIS_SCALA_VERSION clean coverage test;
       else
       sbt ++$TRAVIS_SCALA_VERSION clean test;
       fi
-after_success: |
+after_success:
   - if [ "$TRAVIS_SCALA_VERSION" == "2.11.8" ]; then
       sbt ++$TRAVIS_SCALA_VERSION coveralls;
       fi
