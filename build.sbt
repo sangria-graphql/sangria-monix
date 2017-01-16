@@ -1,13 +1,13 @@
 name := "sangria-monix"
 organization := "org.sangria-graphql"
-version := "0.1.2-SNAPSHOT"
+version := "1.0.0"
 
 description := "Sangria monix integration"
 homepage := Some(url("http://sangria-graphql.org"))
 licenses := Seq("Apache License, ASL Version 2.0" → url("http://www.apache.org/licenses/LICENSE-2.0"))
 
-scalaVersion := "2.12.0"
-crossScalaVersions := Seq("2.11.8", "2.12.0")
+scalaVersion := "2.12.1"
+crossScalaVersions := Seq("2.11.8", "2.12.1")
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
@@ -19,10 +19,10 @@ scalacOptions ++= {
 }
 
 libraryDependencies ++= Seq(
-  "org.sangria-graphql" %% "sangria-streaming-api" % "0.1.1",
-  "io.monix" %% "monix-execution" % "2.0.6",
-  "io.monix" %% "monix-reactive" % "2.0.6",
-  "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+  "org.sangria-graphql" %% "sangria-streaming-api" % "1.0.0",
+  "io.monix" %% "monix-execution" % "2.1.2",
+  "io.monix" %% "monix-reactive" % "2.1.2",
+  "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )
 
 git.remoteRepo := "git@github.com:sangria-graphql/sangria-monix.git"

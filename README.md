@@ -5,7 +5,7 @@
 SBT Configuration:
 
 ```scala
-libraryDependencies += "org.sangria-graphql" %% "sangria-monix" % "0.1.1"
+libraryDependencies += "org.sangria-graphql" %% "sangria-monix" % "1.0.0"
 ```
 
 ## License
