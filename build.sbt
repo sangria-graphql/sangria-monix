@@ -20,8 +20,8 @@ scalacOptions ++= {
 
 libraryDependencies ++= Seq(
   "org.sangria-graphql" %% "sangria-streaming-api" % "1.0.0",
-  "io.monix" %% "monix-execution" % "2.1.2",
-  "io.monix" %% "monix-reactive" % "2.1.2",
+  "io.monix" %% "monix-execution" % "3.0.0-RC2",
+  "io.monix" %% "monix-reactive" % "3.0.0-RC2",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )
 

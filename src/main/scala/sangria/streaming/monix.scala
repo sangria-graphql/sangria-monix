@@ -1,9 +1,10 @@
 package sangria.streaming
 
 import scala.language.higherKinds
-
 import _root_.monix.execution.Scheduler
 import _root_.monix.reactive._
+import _root_.monix.eval.Task
+import cats.effect.ExitCase
 
 import scala.concurrent.Future
 
@@ -22,19 +23,22 @@ object monix {
       source.mergeMap(a ⇒ Observable.fromFuture(fn(a)))
 
     def first[T](s: Observable[T]) =
-      s.firstOrElseL(throw new IllegalStateException("Promise was not completed - observable haven't produced any elements.")).runAsync
+      s.firstOrElseL(throw new IllegalStateException("Promise was not completed - observable haven't produced any elements.")).runToFuture
 
     def failed[T](e: Throwable) = Observable.raiseError(e)
 
     def onComplete[Ctx, Res](result: Observable[Res])(op: ⇒ Unit) =
-      result.doOnTerminate(op)
+      result.guaranteeCase {
+        case ExitCase.Error(e) => Task(op)
+        case _ => Task(op)
+      }
 
     def flatMapFuture[Ctx, Res, T](future: Future[T])(resultFn: T ⇒ Observable[Res]) =
       Observable.fromFuture(future).mergeMap(resultFn)
 
     def merge[T](streams: Vector[Observable[T]]) =
       if (streams.nonEmpty)
-        Observable.merge(streams: _*)
+        Observable(streams: _*).merge
       else
         throw new IllegalStateException("No streams produced!")
 

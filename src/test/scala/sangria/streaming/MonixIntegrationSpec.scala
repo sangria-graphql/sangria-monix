@@ -58,7 +58,7 @@ class MonixIntegrationSpec extends WordSpec with Matchers {
       subj.onNext(2)
       subj.onComplete()
 
-      Await.ready(updated.toListL.runAsync, 2 seconds)
+      Await.ready(updated.toListL.runToFuture, 2 seconds)
 
       count.get() should be (1)
     }
@@ -72,7 +72,7 @@ class MonixIntegrationSpec extends WordSpec with Matchers {
 
       subj.onError(new IllegalStateException("foo"))
 
-      Await.ready(updated.toListL.runAsync, 2 seconds)
+      Await.ready(updated.toListL.runToFuture, 2 seconds)
 
       count.get() should be (1)
     }
@@ -138,7 +138,7 @@ class MonixIntegrationSpec extends WordSpec with Matchers {
   }
 
   def res[T](obs: Observable[T]) =
-    Await.result(obs.toListL.runAsync, 2 seconds)
+    Await.result(obs.toListL.runToFuture, 2 seconds)
 
   def res[T](f: Future[T]) =
     Await.result(f, 2 seconds)
