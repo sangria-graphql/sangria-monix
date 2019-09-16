@@ -42,9 +42,8 @@ resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositor
 
 // Site and docs
 
-site.settings
-site.includeScaladoc()
-ghpages.settings
+enablePlugins(GhpagesPlugin)
+enablePlugins(SiteScaladocPlugin)
 
 // nice *magenta* prompt!
 
