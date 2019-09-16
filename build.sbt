@@ -7,7 +7,7 @@ homepage := Some(url("http://sangria-graphql.org"))
 licenses := Seq("Apache License, ASL Version 2.0" → url("http://www.apache.org/licenses/LICENSE-2.0"))
 
 scalaVersion := "2.12.10"
-crossScalaVersions := Seq("2.11.12", "2.12.10")
+crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.0")
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
@@ -19,7 +19,7 @@ scalacOptions ++= {
 }
 
 libraryDependencies ++= Seq(
-  "org.sangria-graphql" %% "sangria-streaming-api" % "1.0.0",
+  "org.sangria-graphql" %% "sangria-streaming-api" % "1.0.1-SNAPSHOT",
   "io.monix" %% "monix-execution" % "3.0.0",
   "io.monix" %% "monix-reactive" % "3.0.0",
   "org.scalatest" %% "scalatest" % "3.0.8" % Test
