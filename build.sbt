@@ -1,6 +1,5 @@
 name := "sangria-monix"
 organization := "org.sangria-graphql"
-version := "2.0.0-SNAPSHOT"
 mimaPreviousArtifacts := Set("org.sangria-graphql" %% "sangria-monix" % "1.0.0")
 
 description := "Sangria monix integration"
@@ -29,7 +28,8 @@ libraryDependencies ++= Seq(
 git.remoteRepo := "git@github.com:sangria-graphql/sangria-monix.git"
 
 // Publishing
-
+releaseCrossBuild := true
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
 publishMavenStyle := true
 publishArtifact in Test := false
 pomIncludeRepository := (_ ⇒ false)
