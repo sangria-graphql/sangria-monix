@@ -3,15 +3,16 @@ package sangria.streaming
 import java.util.concurrent.atomic.AtomicInteger
 
 import language.postfixOps
-import org.scalatest.{Matchers, WordSpec}
 import _root_.monix.execution.Scheduler.Implicits.global
 import _root_.monix.reactive.Observable
 import _root_.monix.reactive.subjects.PublishSubject
 
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class MonixIntegrationSpec extends WordSpec with Matchers {
+class MonixIntegrationSpec extends AnyWordSpec with Matchers {
   val impl: SubscriptionStream[Observable] = new monix.ObservableSubscriptionStream
 
   "Monix Integration" should {
