@@ -1,6 +1,6 @@
 [Sangria](http://sangria-graphql.org/) [monix](https://monix.io) integration.
 
-[![Build Status](https://travis-ci.org/sangria-graphql/sangria-monix.svg?branch=master)](https://travis-ci.org/sangria-graphql/sangria-monix)
+![Continuous Integration](https://github.com/sangria-graphql/sangria-monix/workflows/Continuous%20Integration/badge.svg)
 [![Coverage Status](http://coveralls.io/repos/sangria-graphql/sangria-monix/badge.svg?branch=master&service=github)](http://coveralls.io/github/sangria-graphql/sangria-monix?branch=master)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.sangria-graphql/sangria-monix_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.sangria-graphql/sangria-monix_2.12)
 [![License](http://img.shields.io/:license-Apache%202-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
