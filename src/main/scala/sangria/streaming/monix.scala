@@ -9,8 +9,10 @@ import cats.effect.ExitCase
 import scala.concurrent.Future
 
 object monix {
-  class ObservableSubscriptionStream(implicit scheduler: Scheduler) extends SubscriptionStream[Observable] {
-    def supported[T[_]](other: SubscriptionStream[T]) = other.isInstanceOf[ObservableSubscriptionStream]
+  class ObservableSubscriptionStream(implicit scheduler: Scheduler)
+      extends SubscriptionStream[Observable] {
+    def supported[T[_]](other: SubscriptionStream[T]) =
+      other.isInstanceOf[ObservableSubscriptionStream]
 
     def map[A, B](source: Observable[A])(fn: A => B) = source.map(fn)
 
@@ -23,7 +25,10 @@ object monix {
       source.mergeMap(a => Observable.fromFuture(fn(a)))
 
     def first[T](s: Observable[T]) =
-      s.firstOrElseL(throw new IllegalStateException("Promise was not completed - observable haven't produced any elements.")).runToFuture
+      s.firstOrElseL(
+        throw new IllegalStateException(
+          "Promise was not completed - observable haven't produced any elements."))
+        .runToFuture
 
     def failed[T](e: Throwable) = Observable.raiseError(e)
 
@@ -43,9 +48,10 @@ object monix {
         throw new IllegalStateException("No streams produced!")
 
     def recover[T](stream: Observable[T])(fn: Throwable => T) =
-      stream onErrorRecover {case e => fn(e)}
+      stream.onErrorRecover { case e => fn(e) }
   }
 
-  implicit def observableSubscriptionStream(implicit scheduler: Scheduler): SubscriptionStream[Observable] =
+  implicit def observableSubscriptionStream(implicit
+      scheduler: Scheduler): SubscriptionStream[Observable] =
     new ObservableSubscriptionStream
 }
