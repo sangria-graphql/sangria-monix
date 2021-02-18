@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
   "org.sangria-graphql" %% "sangria-streaming-api" % "1.0.2",
   "io.monix" %% "monix-execution" % "3.3.0",
   "io.monix" %% "monix-reactive" % "3.3.0",
-  "org.scalatest" %% "scalatest" % "3.2.3" % Test
+  "org.scalatest" %% "scalatest" % "3.2.4" % Test
 )
 
 git.remoteRepo := "git@github.com:sangria-graphql/sangria-monix.git"
