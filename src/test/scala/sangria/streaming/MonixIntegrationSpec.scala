@@ -33,7 +33,7 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
     }
 
     "mapFuture" in {
-      res(impl.mapFuture(Observable(1, 2, 10))(x ⇒ Future.successful(x + 1))) should be(
+      res(impl.mapFuture(Observable(1, 2, 10))(x => Future.successful(x + 1))) should be(
         List(2, 3, 11))
     }
 
@@ -82,17 +82,17 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
 
     "flatMapFuture" in {
       res(
-        impl.flatMapFuture(Future.successful(1))(i ⇒
+        impl.flatMapFuture(Future.successful(1))(i =>
           Observable(i.toString, (i + 1).toString))) should be(List("1", "2"))
     }
 
     "recover" in {
-      val obs = Observable(1, 2, 3, 4).map { i ⇒
+      val obs = Observable(1, 2, 3, 4).map { i =>
         if (i == 3) throw new IllegalStateException("foo")
         else i
       }
 
-      res(impl.recover(obs)(_ ⇒ 100)) should be(List(1, 2, 100))
+      res(impl.recover(obs)(_ => 100)) should be(List(1, 2, 100))
     }
 
     "merge" in {
@@ -102,13 +102,13 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
 
       val result = res(impl.merge(Vector(obs1, obs2, obs3)))
 
-      result should (have(size(6))
+      result should have(size(6))
         .and(contain(1))
         .and(contain(2))
         .and(contain(3))
         .and(contain(4))
         .and(contain(100))
-        .and(contain(200)))
+        .and(contain(200))
     }
 
     "merge 2" in {
@@ -117,11 +117,11 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
 
       val result = res(impl.merge(Vector(obs1, obs2)))
 
-      result should (have(size(4))
+      result should have(size(4))
         .and(contain(1))
         .and(contain(2))
         .and(contain(100))
-        .and(contain(200)))
+        .and(contain(200))
     }
 
     "merge 1" in {
@@ -129,7 +129,7 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
 
       val result = res(impl.merge(Vector(obs1)))
 
-      result should (have(size(2)).and(contain(1)).and(contain(2)))
+      result should have(size(2)).and(contain(1)).and(contain(2))
     }
 
     "merge throws exception on empty" in {
@@ -137,9 +137,9 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
     }
   }
 
-  def res[T](obs: Observable[T]) =
+  def res[T](obs: Observable[T]): List[T] =
     Await.result(obs.toListL.runToFuture, 2 seconds)
 
-  def res[T](f: Future[T]) =
+  def res[T](f: Future[T]): T =
     Await.result(f, 2 seconds)
 }
