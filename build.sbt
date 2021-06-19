@@ -3,9 +3,9 @@ organization := "org.sangria-graphql"
 mimaPreviousArtifacts := Set("org.sangria-graphql" %% "sangria-monix" % "2.0.0")
 
 description := "Sangria monix integration"
-homepage := Some(url("http://sangria-graphql.org"))
+homepage := Some(url("https://sangria-graphql.github.io/"))
 licenses := Seq(
-  "Apache License, ASL Version 2.0" → url("http://www.apache.org/licenses/LICENSE-2.0"))
+  "Apache License, ASL Version 2.0" → url("https://www.apache.org/licenses/LICENSE-2.0"))
 
 ThisBuild / crossScalaVersions := Seq("2.12.14", "2.13.6")
 ThisBuild / scalaVersion := crossScalaVersions.value.last
@@ -15,9 +15,7 @@ ThisBuild / githubWorkflowBuildPreamble ++= List(
   WorkflowStep.Sbt(List("scalafmtCheckAll"), name = Some("Check formatting"))
 )
 
-scalacOptions ++= Seq("-deprecation", "-feature")
-
-scalacOptions += "-target:jvm-1.8"
+scalacOptions ++= Seq("-deprecation", "-feature", "-target:jvm-1.8")
 javacOptions ++= Seq("-source", "8", "-target", "8")
 
 libraryDependencies ++= Seq(
@@ -33,7 +31,7 @@ git.remoteRepo := "git@github.com:sangria-graphql/sangria-monix.git"
 ThisBuild / githubWorkflowTargetTags ++= Seq("v*")
 ThisBuild / githubWorkflowPublishTargetBranches :=
   Seq(RefPredicate.StartsWith(Ref.Tag("v")))
-  ThisBuild / githubWorkflowPublish := Seq(
+ThisBuild / githubWorkflowPublish := Seq(
   WorkflowStep.Sbt(
     List("ci-release"),
     env = Map(
@@ -48,18 +46,15 @@ ThisBuild / githubWorkflowPublishTargetBranches :=
 resolvers += "Sonatype snapshots".at("https://oss.sonatype.org/content/repositories/snapshots/")
 
 // Site and docs
-
 enablePlugins(GhpagesPlugin)
 enablePlugins(SiteScaladocPlugin)
 
 // nice *magenta* prompt!
-
-shellPrompt in ThisBuild := { state ⇒
+ThisBuild / shellPrompt := { state ⇒
   scala.Console.MAGENTA + Project.extract(state).currentRef.project + "> " + scala.Console.RESET
 }
 
 // Additional meta-info
-
 startYear := Some(2016)
 organizationHomepage := Some(url("https://github.com/sangria-graphql"))
 developers := Developer(
