@@ -44,9 +44,9 @@ object monix {
       Observable.fromFuture(future).mergeMap(resultFn)
 
     def merge[T](streams: Vector[Observable[T]]): Observable[T] =
-      if (streams.nonEmpty)
-        Observable(streams: _*).merge
-      else
+      if (streams.nonEmpty) {
+        Observable.merge(streams: _*)
+      } else
         throw new IllegalStateException("No streams produced!")
 
     def recover[T](stream: Observable[T])(fn: Throwable => T): Observable[T] =
