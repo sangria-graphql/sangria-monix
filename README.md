@@ -1,4 +1,4 @@
-[Sangria](http://sangria-graphql.org/) [monix](https://monix.io) integration.
+[Sangria](https://sangria-graphql.github.io/) [monix](https://monix.io) integration.
 
 ![Continuous Integration](https://github.com/sangria-graphql/sangria-monix/workflows/Continuous%20Integration/badge.svg)
 [![Coverage Status](http://coveralls.io/repos/sangria-graphql/sangria-monix/badge.svg?branch=master&service=github)](http://coveralls.io/github/sangria-graphql/sangria-monix?branch=master)
