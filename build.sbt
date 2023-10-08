@@ -15,7 +15,7 @@ homepage := Some(url("https://sangria-graphql.github.io/"))
 licenses := Seq(
   "Apache License, ASL Version 2.0" → url("https://www.apache.org/licenses/LICENSE-2.0"))
 
-ThisBuild / crossScalaVersions := Seq("2.12.18", "2.13.12", "3.3.0")
+ThisBuild / crossScalaVersions := Seq("2.12.18", "2.13.12", "3.3.1")
 ThisBuild / scalaVersion := crossScalaVersions.value.last
 ThisBuild / githubWorkflowPublishTargetBranches := List()
 ThisBuild / githubWorkflowBuildPreamble ++= List(
@@ -35,7 +35,7 @@ libraryDependencies ++= Seq(
   "org.sangria-graphql" %% "sangria-streaming-api" % "1.0.3",
   "io.monix" %% "monix-execution" % "3.4.1",
   "io.monix" %% "monix-reactive" % "3.4.1",
-  "org.scalatest" %% "scalatest" % "3.2.16" % Test
+  "org.scalatest" %% "scalatest" % "3.2.17" % Test
 )
 
 git.remoteRepo := "git@github.com:sangria-graphql/sangria-monix.git"
