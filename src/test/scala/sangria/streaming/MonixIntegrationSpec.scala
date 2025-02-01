@@ -61,7 +61,7 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
       subj.onNext(2)
       subj.onComplete()
 
-      Await.ready(updated.toListL.runToFuture, 2 seconds)
+      Await.ready(updated.toListL.runToFuture, 2.seconds)
 
       count.get() should be(1)
     }
@@ -75,15 +75,14 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
 
       subj.onError(new IllegalStateException("foo"))
 
-      Await.ready(updated.toListL.runToFuture, 2 seconds)
+      Await.ready(updated.toListL.runToFuture, 2.seconds)
 
       count.get() should be(1)
     }
 
     "flatMapFuture" in {
-      res(
-        impl.flatMapFuture(Future.successful(1))(i =>
-          Observable(i.toString, (i + 1).toString))) should be(List("1", "2"))
+      res(impl.flatMapFuture(Future.successful(1))(i =>
+        Observable(i.toString, (i + 1).toString))) should be(List("1", "2"))
     }
 
     "recover" in {
@@ -138,8 +137,8 @@ class MonixIntegrationSpec extends AnyWordSpec with Matchers {
   }
 
   def res[T](obs: Observable[T]): List[T] =
-    Await.result(obs.toListL.runToFuture, 2 seconds)
+    Await.result(obs.toListL.runToFuture, 2.seconds)
 
   def res[T](f: Future[T]): T =
-    Await.result(f, 2 seconds)
+    Await.result(f, 2.seconds)
 }
