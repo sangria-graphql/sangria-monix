@@ -15,7 +15,7 @@ homepage := Some(url("https://sangria-graphql.github.io/"))
 licenses := Seq(
   "Apache License, ASL Version 2.0" → url("https://www.apache.org/licenses/LICENSE-2.0"))
 
-ThisBuild / crossScalaVersions := Seq("2.12.21", "2.13.17", "3.7.4")
+ThisBuild / crossScalaVersions := Seq("2.12.21", "2.13.18", "3.7.4")
 ThisBuild / scalaVersion := crossScalaVersions.value.last
 ThisBuild / githubWorkflowPublishTargetBranches := List()
 ThisBuild / githubWorkflowBuildPreamble ++= List(
